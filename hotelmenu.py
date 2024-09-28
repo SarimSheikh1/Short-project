@@ -1,62 +1,77 @@
 import streamlit as st
 
 menu = {
-    '🍕 Pizza': 800,
-    '🍔 Burger': 300,
-    '🍜 Noodles': 200,
-    '🥤 Coke': 100,
-    '💧 Water': 50,
-    '🍵 Tea': 60,
-    '☕ Coffee': 130,
-    '🍟 Fries': 200,
-    '🥪 Sandwich': 350,
-    '🥚 Egg': 100,
-    '🍝 Pasta': 350,
-    '🥗 Salad': 180,
-    '🌯 Chicken Wrap': 250,
-    '🧄 Garlic Bread': 150,
-    '🍦 Ice Cream': 90,
-    '🍫 Chocolate Cake': 150,
-    '🍗 Grilled Chicken': 400,
-    '🐟 Fish and Chips': 750,
-    '🌮 Tacos': 320,
-    '🥟 Spring Rolls': 140,
-    '🧀 Nachos': 180,
-    '🥛 Milkshake': 200,
-    '🧁 Muffin': 100,
-    '🥤 Smoothie': 150,
-    '🍩 Donut': 80,
+    '1. Pizza 🍕': 800,
+    '2. Burger 🍔': 300,
+    '3. Noodles 🍜': 200,
+    '4. Coke 🥤': 100,
+    '5. Water 💧': 50,
+    '6. Tea 🍵': 60,
+    '7. Coffee ☕': 130,
+    '8. Fries 🍟': 200,
+    '9. Sandwich 🥪': 350,
+    '10. Egg 🥚': 100,
+    '11. Pasta 🍝': 350,
+    '12. Salad 🥗': 180,
+    '13. Chicken Wrap 🌯': 250,
+    '14. Garlic Bread 🧄': 150,
+    '15. Ice Cream 🍦': 90,
+    '16. Chocolate Cake 🍫': 150,
+    '17. Grilled Chicken 🍗': 400,
+    '18. Fish and Chips 🐟': 750,
+    '19. Tacos 🌮': 320,
+    '20. Spring Rolls 🥟': 140,
+    '21. Nachos 🧀': 180,
+    '22. Milkshake 🥛': 200,
+    '23. Muffin 🧁': 100,
+    '24. Smoothie 🥤': 150,
+    '25. Donut 🍩': 80,
 }
 
 st.title("🍽️ Welcome to Sarim Sheikh Hotel")
 st.write("Here's our menu:\n")
 
-# Display the menu items with emojis
+# Display the menu items
 for item, price in menu.items():
-    st.write(f"{item}: {price} 💸")
+    st.write(f"{item}: {price} 💸")  # Numbered list of items
 
-order_total = 0
+# Initialize order totals
+if 'order_total' not in st.session_state:
+    st.session_state.order_total = 0
+if 'first_item_total' not in st.session_state:
+    st.session_state.first_item_total = 0
+if 'second_item_total' not in st.session_state:
+    st.session_state.second_item_total = 0
 
 # Input for first item
-item_1 = st.text_input("Enter the name of the item you want to order 🍽️:")
+item_number = st.number_input("Enter the number of the item you want to order 🍽️:", min_value=1, max_value=len(menu), step=1)
 
 if st.button("🛒 Add First Item"):
-    if item_1 in menu:
-        order_total += menu[item_1]
-        st.write(f"✅ Your item **{item_1}** has been added to your order")
-    else:
-        st.write(f"❌ Sorry, **{item_1}** is not available in our menu")
+    item_name = list(menu.keys())[item_number - 1]  # Get the item name based on the selected number
+    st.session_state.first_item_total = menu[item_name]
+    st.session_state.order_total += st.session_state.first_item_total
+    st.write(f"✅ Your first item **{item_name}** has been added to your order. Price: {st.session_state.first_item_total} 💵")
+
+# Display total for the first item
+if st.session_state.first_item_total > 0:
+    st.write(f"💰 Total for first item: **{st.session_state.first_item_total}** 💵")
 
 # Option to add another item
 if st.checkbox("🛒 Do you want to add another item?"):
-    item_2 = st.text_input("Enter the name of the second item 🍽️:")
+    item_number_2 = st.number_input("Enter the number of the second item 🍽️:", min_value=1, max_value=len(menu), step=1)
 
     if st.button("🛒 Add Second Item"):
-        if item_2 in menu:
-            order_total += menu[item_2]
-            st.write(f"✅ Your item **{item_2}** has been added to your order")
-        else:
-            st.write(f"❌ Sorry, **{item_2}** is not available in our menu")
+        item_name_2 = list(menu.keys())[item_number_2 - 1]  # Get the item name based on the selected number
+        st.session_state.second_item_total = menu[item_name_2]
+        st.session_state.order_total += st.session_state.second_item_total
+        st.write(f"✅ Your second item **{item_name_2}** has been added to your order. Price: {st.session_state.second_item_total} 💵")
 
-# Display the total bill with emojis
-st.write(f"💰 Your total bill amount to be paid is: **{order_total}** 💵")
+# Display total for the second item
+if st.session_state.second_item_total > 0:
+    st.write(f"💰 Total for second item: **{st.session_state.second_item_total}** 💵")
+
+# Display the overall total bill
+st.write(f"💰 Your total bill amount to be paid is: **{st.session_state.order_total}** 💵")
+
+# Thank you message with emojis at the end
+st.write("Thank you for your order! 😊🍽️ We hope you enjoy your meal! 🍴✨")
