@@ -1,11 +1,6 @@
 import os
 import streamlit as st
 
-# Add a cartoon image using an online URL
-st.image('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L2pvYjY4Ni0yNTMteC5qcGc.jpg', width=200)  # Replace with the actual image URL
-
-# (rest of the code remains the same)
-
 def create_file(filename):
     try:
         with open(filename, 'x') as f:
