@@ -1,5 +1,4 @@
-import streamlit as st 
-from PIL import Image
+import streamlit as st
 import os
 
 # Set page configuration
@@ -11,7 +10,10 @@ with st.sidebar:
     st.write("Select your Nature Theme settings:")
 
     # Option to toggle between theme colors
-    theme_color = st.selectbox("Choose your theme color", ['Light Mode', 'Dark Mode', 'Black', 'Yellow', 'Red'])
+    theme_color = st.selectbox("Choose your theme color", [
+        'Light Mode', 'Dark Mode', 'Black', 'Yellow', 'Red', 
+        'Pastel', 'Earthy Autumn', 'Neon', 'Sunset', 'Ocean'
+    ])
 
     # Option to choose nature background image from different global locations
     bg_option = st.selectbox("Select a Nature Background", ["Forest", "Ocean", "Mountains", "Desert"])
@@ -21,25 +23,45 @@ with st.sidebar:
 
 # Define color schemes based on user selection
 if theme_color == 'Light Mode':
-    bg_color = "#E6F2E6"  # Light green
-    text_color = "#2E4600"  # Deep earthy green
-    button_color = "#9BBF30"  # Leafy green
+    bg_color = "#E6F2E6"
+    text_color = "#2E4600"
+    button_color = "#9BBF30"
 elif theme_color == 'Dark Mode':
-    bg_color = "#2E4600"  # Dark forest green
-    text_color = "#F4EBC3"  # Light beige
-    button_color = "#617A55"  # Earthy brown
+    bg_color = "#2E4600"
+    text_color = "#F4EBC3"
+    button_color = "#617A55"
 elif theme_color == 'Black':
-    bg_color = "#000000"  # Black background
-    text_color = "#FFFFFF"  # White text
-    button_color = "#FF0000"  # Red button
+    bg_color = "#000000"
+    text_color = "#FFFFFF"
+    button_color = "#FF0000"
 elif theme_color == 'Yellow':
-    bg_color = "#FFFF00"  # Yellow background
-    text_color = "#000000"  # Black text
-    button_color = "#FFCC00"  # Dark yellow button
+    bg_color = "#FFFF00"
+    text_color = "#000000"
+    button_color = "#FFCC00"
 elif theme_color == 'Red':
-    bg_color = "#FFCCCC"  # Light red background
-    text_color = "#660000"  # Dark red text
-    button_color = "#FF0000"  # Red button
+    bg_color = "#FFCCCC"
+    text_color = "#660000"
+    button_color = "#FF0000"
+elif theme_color == 'Pastel':
+    bg_color = "#FFD1DC"  # Light pink
+    text_color = "#3C3C3C"  # Dark gray
+    button_color = "#FFB3B3"  # Light red
+elif theme_color == 'Earthy Autumn':
+    bg_color = "#C58C4D"  # Earthy brown
+    text_color = "#FFF3E0"  # Light beige
+    button_color = "#8A5B3B"  # Darker brown
+elif theme_color == 'Neon':
+    bg_color = "#39FF14"  # Neon green
+    text_color = "#000000"  # Black
+    button_color = "#FF005D"  # Neon pink
+elif theme_color == 'Sunset':
+    bg_color = "#FF7F50"  # Coral
+    text_color = "#FFFFFF"  # White
+    button_color = "#FFD700"  # Gold
+elif theme_color == 'Ocean':
+    bg_color = "#0099CC"  # Ocean blue
+    text_color = "#FFFFFF"  # White
+    button_color = "#006699"  # Darker blue
 
 # Define background image based on user selection
 base_path = r"C:\Users\sarim\OneDrive\Desktop\New folder"  # Base path for images
