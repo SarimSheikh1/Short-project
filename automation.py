@@ -38,11 +38,6 @@ def search_facebook(query):
     url = f"https://www.facebook.com/search/top?q={query}"
     webbrowser.open(url)
 
-# Function to search in Microsoft Edge
-def search_edge(query):
-    url = f"https://www.bing.com/search?q={query}"
-    webbrowser.get('microsoft-edge').open(url)
-
 # Function to search on X (formerly Twitter)
 def search_x(query):
     url = f"https://twitter.com/search?q={query}"
@@ -91,9 +86,6 @@ if st.button("📘 Search on Facebook"):
 
 if st.button("🐦 Search on X (formerly Twitter)"):
     search_x(query)
-
-if st.button("🖥️ Search with Microsoft Edge"):
-    search_edge(query)
 
 if st.button("🤖 Search on ChatGPT"):
     search_chatgpt(query)
