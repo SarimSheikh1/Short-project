@@ -48,19 +48,19 @@ def search_chatgpt(query):
     url = f"https://chat.openai.com/?q={query}"
     webbrowser.open(url)
 
-# Function to search on Gemini (Google's AI)
-def search_gemini(query):
-    url = f"https://gemini.google.com/search?q={query}"
-    webbrowser.open(url)
-
 # Function to search on GitHub
 def search_github(query):
     url = f"https://github.com/search?q={query}"
     webbrowser.open(url)
 
-# Function to search on Meta AI
-def search_meta_ai(query):
-    url = f"https://ai.facebook.com/search?q={query}"
+# Function to open Meta AI homepage
+def search_meta_ai():
+    url = "https://ai.facebook.com"  # Meta AI homepage for research
+    webbrowser.open(url)
+
+# Function to open Google Search (as Gemini is not publicly available yet)
+def search_gemini(query):
+    url = f"https://www.google.com/search?q={query}+gemini"
     webbrowser.open(url)
 
 # Function to search on Snapchat
@@ -90,14 +90,14 @@ if st.button("🐦 Search on X (formerly Twitter)"):
 if st.button("🤖 Search on ChatGPT"):
     search_chatgpt(query)
 
-if st.button("✨ Search on Gemini"):
+if st.button("✨ Search on Gemini (Google)"):
     search_gemini(query)
 
 if st.button("🐙 Search on GitHub"):
     search_github(query)
 
-if st.button("🧠 Search on Meta AI"):
-    search_meta_ai(query)
+if st.button("🧠 Go to Meta AI Homepage"):
+    search_meta_ai()
 
 if st.button("👻 Search on Snapchat"):
     search_snapchat(query)
