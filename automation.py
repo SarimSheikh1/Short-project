@@ -101,3 +101,7 @@ if st.button("🧠 Go to Meta AI Homepage"):
 
 if st.button("👻 Search on Snapchat"):
     search_snapchat(query)
+
+
+# this code to check the output in streamlit
+# bash command: streamlit run automation.py
