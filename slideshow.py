@@ -54,3 +54,6 @@ if uploaded_videos and len(uploaded_videos) <= 5:
         )
 else:
     st.write("Please upload up to 5 videos to play.")
+
+# this code to check the output in streamlit
+# bash command: streamlit run slideshow.py
