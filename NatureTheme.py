@@ -122,3 +122,6 @@ st.write("This theme is inspired by natural beauty from around the world, design
 # Example button
 if st.button("Learn More"):
     st.write("Nature-inspired designs foster calm and tranquility.")
+
+# this code to check the output in streamlit
+# bash command: streamlit run NatureTheme.py
