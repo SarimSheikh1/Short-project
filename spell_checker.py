@@ -1,6 +1,6 @@
 import streamlit as st
+#from spellchecker import SpellChecker  # Correct import
 from spellchecker import SpellChecker
-
 class SpellCheckerApp:
     def __init__(self):
         self.spell = SpellChecker()
@@ -10,7 +10,7 @@ class SpellCheckerApp:
         corrected_words = []
         
         for word in words:
-            corrected_word = self.spell.correction(word)  # Correct the word
+            corrected_word = self.spell.correction(word)
             if corrected_word != word.lower():
                 st.write(f'🔧 Correcting "{word}" to "{corrected_word}"')
             corrected_words.append(corrected_word)
@@ -36,3 +36,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# this code to check the output in streamlit
+# bash command: streamlit run slideshow.py
