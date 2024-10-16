@@ -40,8 +40,7 @@ if 'order_total' not in st.session_state:
     st.session_state.order_total = 0
 if 'first_item_total' not in st.session_state:
     st.session_state.first_item_total = 0
-if 'second_item_total' not in st.session_state:
-    st.session_state.second_item_total = 0
+if 'second_item_total' not in st.session_state:st.session_state.second_item_total = 0
 
 # Input for first item
 item_number = st.number_input("Enter the number of the item you want to order 🍽️:", min_value=1, max_value=len(menu), step=1)
@@ -75,3 +74,6 @@ st.write(f"💰 Your total bill amount to be paid is: **{st.session_state.order_
 
 # Thank you message with emojis at the end
 st.write("Thank you for your order! 😊🍽️ We hope you enjoy your meal! 🍴✨")
+
+# this code to check the output in streamlit
+# bash command: streamlit run hotelmenu.py
