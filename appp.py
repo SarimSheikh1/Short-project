@@ -82,3 +82,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# this code to check the output in streamlit
+# bash command: streamlit run  appp.py
