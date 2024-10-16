@@ -35,3 +35,6 @@ while True:
     print(f"Bot: {response}")
     if response == "Goodbye! Thanks for chatting about HTML & CSS.":
         break
+
+# this code to check the output in streamlit
+# bash command: streamlit run chatbot.py
