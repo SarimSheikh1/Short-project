@@ -19,12 +19,22 @@ st.markdown(
 
 # Function to open the YouTube search
 def search_youtube(query):
-    url = f"https://www.youtube.com/results?search_query={query}"
+    url = f"https://www.youtube.com/results?search_query={query}+full+movie"
     webbrowser.open(url)
 
 # Function to open the Google search
 def search_google(query):
     url = f"https://www.google.com/search?q={query}"
+    webbrowser.open(url)
+
+# Function to search for full movies on Google Play
+def search_google_play_movies(query):
+    url = f"https://play.google.com/store/search?q={query}+full+movie&c=movies"
+    webbrowser.open(url)
+
+# Function to search for full movies on Netflix
+def search_netflix(query):
+    url = f"https://www.netflix.com/search?q={query}"
     webbrowser.open(url)
 
 # Function to open Instagram profile
@@ -72,11 +82,14 @@ def search_snapchat(query):
 query = st.text_input("Enter your command:")
 
 # Buttons for each platform with emojis
-if st.button("🔍 Search on YouTube"):
+if st.button("🎥 Search Full Movies on YouTube"):
     search_youtube(query)
 
-if st.button("🌐 Search on Google"):
-    search_google(query)
+if st.button("🎥 Search Full Movies on Google Play Movies"):
+    search_google_play_movies(query)
+
+if st.button("🎥 Search Full Movies on Netflix"):
+    search_netflix(query)
 
 if st.button("📸 Search on Instagram"):
     search_instagram(query)
@@ -101,7 +114,3 @@ if st.button("🧠 Go to Meta AI Homepage"):
 
 if st.button("👻 Search on Snapchat"):
     search_snapchat(query)
-
-
-# this code to check the output in streamlit
-# bash command: streamlit run automation.py
