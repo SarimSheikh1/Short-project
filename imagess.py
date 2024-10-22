@@ -4,7 +4,7 @@ from PIL import Image
 # Local paths to the image (update the paths with the actual location on your machine)
 image_paths = [
     'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg',  # Make sure this path is correct
-    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg',
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess2.jpg',
     'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg'
 ]
 
@@ -13,18 +13,18 @@ if 'current_index' not in st.session_state:
     st.session_state.current_index = 0
 
 # Function to display the current image
-def display_image(index):
+def display_image(index, width=None):
     try:
         image = Image.open(image_paths[index])
-        st.image(image, use_column_width=True)
+        st.image(image, use_column_width=width is None, width=width)
     except FileNotFoundError:
         st.error(f"File not found: {image_paths[index]}")
 
 # App title
 st.title("Image Slideshow")
 
-# Display the current image
-display_image(st.session_state.current_index)
+# Display the current image with an adjustable width (e.g., 500 pixels)
+display_image(st.session_state.current_index, width=500)
 
 # Add navigation buttons
 col1, col2 = st.columns(2)
