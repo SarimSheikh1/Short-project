@@ -1,31 +1,45 @@
 import streamlit as st
 from PIL import Image
-import time
 
-# Function to display the slideshow
-def display_slideshow(image_paths, delay):
-    img = st.empty()  # Placeholder for the slideshow
-    for image_path in image_paths:
-        image = Image.open(image_path)
-        img.image(image, use_column_width=True)
-        time.sleep(delay)  # Pause between images
-
-# List of image paths (update with your actual image paths)
+# Local paths to the image (update the paths with the actual location on your machine)
 image_paths = [
-    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg',
-    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg',
-    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg'
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg',  # Make sure this path is correct
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg',
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jpeg'
 ]
 
-# Slideshow delay (in seconds)
-delay = 3  # Change image every 3 seconds
+# Initialize session state for image index if not already set
+if 'current_index' not in st.session_state:
+    st.session_state.current_index = 0
+
+# Function to display the current image
+def display_image(index):
+    try:
+        image = Image.open(image_paths[index])
+        st.image(image, use_column_width=True)
+    except FileNotFoundError:
+        st.error(f"File not found: {image_paths[index]}")
 
 # App title
 st.title("Image Slideshow")
 
-# Add instructions or descriptions here
-st.write("The slideshow will automatically change images every 3 seconds.")
+# Display the current image
+display_image(st.session_state.current_index)
 
-# Start the slideshow
-if st.button("Start Slideshow"):
-    display_slideshow(image_paths, delay)
+# Add navigation buttons
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("Previous"):
+        if st.session_state.current_index > 0:
+            st.session_state.current_index -= 1
+        else:
+            st.warning("This is the first image.")
+with col2:
+    if st.button("Next"):
+        if st.session_state.current_index < len(image_paths) - 1:
+            st.session_state.current_index += 1
+        else:
+            st.warning("This is the last image.")
+
+# Add instructions or descriptions here
+st.write("Use the buttons to navigate through the images.")
