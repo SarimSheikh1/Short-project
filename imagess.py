@@ -10,8 +10,12 @@ def display_slideshow(image_paths, delay):
         img.image(image, use_column_width=True)
         time.sleep(delay)  # Pause between images
 
-# List of image paths (replace with your actual image paths)
-image_paths = ['image1.jpg', 'image2.jpg', 'image3.jpg']
+# List of image paths (update with your actual image paths)
+image_paths = [
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg',
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg',
+    'C:/Users/sarim/OneDrive/Desktop/New folder/imagess1.jepg'
+]
 
 # Slideshow delay (in seconds)
 delay = 3  # Change image every 3 seconds
